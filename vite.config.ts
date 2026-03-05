@@ -7,26 +7,22 @@ export default defineConfig({
     react(),
     viteStaticCopy({
       targets: [
-        { src: 'node_modules/cesium/Build/Cesium/Workers', dest: 'cesium' },
-        { src: 'node_modules/cesium/Build/Cesium/Assets', dest: 'cesium' },
-        { src: 'node_modules/cesium/Build/Cesium/Widgets', dest: 'cesium' }
+        { src: 'node_modules/cesium/Build/Cesium/Workers', dest: 'cesium/Workers' },
+        { src: 'node_modules/cesium/Build/Cesium/Assets', dest: 'cesium/Assets' },
+        { src: 'node_modules/cesium/Build/Cesium/Widgets', dest: 'cesium/Widgets' },
+        { src: 'node_modules/cesium/Build/Cesium/ThirdParty', dest: 'cesium/ThirdParty' }
       ]
     })
   ],
   define: {
-    CESIUM_BASE_URL: JSON.stringify('/cesium'),
-    CESIUM_ION_TOKEN: JSON.stringify(process.env.VITE_CESIUM_ION_TOKEN || 'your-cesium-ion-token')
-  },
-  optimizeDeps: {
-    exclude: ['@cesium/engine']
+    CESIUM_BASE_URL: JSON.stringify('/cesium/')
   },
   build: {
     rollupOptions: {
-      external: ['satellite.js', '@cesium/engine'],
+      external: ['satellite.js'],
       output: {
         globals: {
-          'satellite.js': 'satellite',
-          '@cesium/engine': 'Cesium'
+          'satellite.js': 'satellite'
         }
       }
     }
@@ -35,12 +31,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
-        changeOrigin: true,
-        configure: (proxy, options) => {
-          proxy.on('error', (err, req, res) => {
-            console.log('Proxy error, falling back to direct API calls')
-          })
-        }
+        changeOrigin: true
       }
     }
   }
