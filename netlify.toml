@@ -1,6 +1,7 @@
 [build]
   command = "npm run build:vite"
   publish = "dist"
+  timeout = 300
 
 [[redirects]]
   from = "/*"
