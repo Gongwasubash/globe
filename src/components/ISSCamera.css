@@ -1,0 +1,196 @@
+.iss-camera-widget {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background: rgba(10, 10, 20, 0.9);
+  border: 2px solid rgba(0, 255, 150, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 255, 150, 0.2);
+  font-family: 'Courier New', monospace;
+  color: #0ff;
+  z-index: 1000;
+  max-width: 400px;
+  transition: max-height 0.3s ease;
+}
+
+.iss-camera-header {
+  padding: 0;
+  background: linear-gradient(135deg, rgba(0, 200, 100, 0.1), rgba(0, 150, 200, 0.1));
+}
+
+.iss-toggle-btn {
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: none;
+  color: #0ff;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.iss-toggle-btn:hover {
+  background-color: rgba(0, 255, 150, 0.1);
+}
+
+.iss-icon {
+  font-size: 16px;
+}
+
+.iss-title {
+  flex: 1;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+.iss-arrow {
+  transition: transform 0.3s;
+  display: inline-block;
+}
+
+.iss-arrow.expanded {
+  transform: rotate(180deg);
+}
+
+.iss-camera-content {
+  max-height: 800px;
+  overflow-y: auto;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 800px;
+    opacity: 1;
+  }
+}
+
+.iss-video-container {
+  padding: 12px;
+  border-bottom: 1px solid rgba(0, 255, 150, 0.2);
+}
+
+.iss-video-placeholder {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 255, 150, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.iss-video-placeholder > p {
+  margin: 0;
+  padding: 8px;
+  font-size: 12px;
+  color: rgba(0, 255, 150, 0.7);
+  text-align: center;
+}
+
+.iss-video-placeholder iframe {
+  border: none;
+  width: 100%;
+  height: 250px;
+}
+
+.iss-data-panel {
+  padding: 12px;
+  border-bottom: 1px solid rgba(0, 255, 150, 0.2);
+}
+
+.iss-data-panel h3 {
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  color: #0ff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 255, 150, 0.3);
+}
+
+.iss-loading,
+.iss-no-data {
+  padding: 8px;
+  text-align: center;
+  color: rgba(0, 255, 150, 0.7);
+  font-size: 12px;
+}
+
+.iss-error {
+  padding: 8px;
+  background: rgba(255, 100, 100, 0.1);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  border-radius: 4px;
+  color: #ff6666;
+  font-size: 12px;
+}
+
+.iss-data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.iss-data-item {
+  background: rgba(0, 255, 150, 0.05);
+  border: 1px solid rgba(0, 255, 150, 0.2);
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.iss-data-item label {
+  display: block;
+  font-size: 11px;
+  color: rgba(0, 255, 150, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.iss-data-item .iss-value {
+  font-size: 13px;
+  color: #0ff;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+.iss-info {
+  padding: 12px;
+  background: rgba(0, 100, 150, 0.1);
+  border-top: 1px solid rgba(0, 255, 150, 0.2);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.iss-info p {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(0, 255, 150, 0.8);
+  line-height: 1.5;
+}
+
+/* Scrollbar styling */
+.iss-camera-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.iss-camera-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.iss-camera-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 150, 0.4);
+  border-radius: 3px;
+}
+
+.iss-camera-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 150, 0.6);
+}

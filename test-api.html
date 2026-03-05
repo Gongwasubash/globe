@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API Test</h1>
+    <button onclick="testFlights()">Test Flights</button>
+    <button onclick="testSatellites()">Test Satellites</button>
+    <button onclick="testEarthquakes()">Test Earthquakes</button>
+    <button onclick="testFires()">Test Fires</button>
+    <div id="results"></div>
+
+    <script>
+        async function testFlights() {
+            try {
+                const response = await fetch('/api/flights');
+                const data = await response.json();
+                document.getElementById('results').innerHTML = `<pre>Flights: ${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('results').innerHTML = `<pre>Error: ${error.message}</pre>`;
+            }
+        }
+
+        async function testSatellites() {
+            try {
+                const response = await fetch('/api/satellites');
+                const data = await response.json();
+                document.getElementById('results').innerHTML = `<pre>Satellites: ${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('results').innerHTML = `<pre>Error: ${error.message}</pre>`;
+            }
+        }
+
+        async function testEarthquakes() {
+            try {
+                const response = await fetch('/api/earthquakes');
+                const data = await response.json();
+                document.getElementById('results').innerHTML = `<pre>Earthquakes: ${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('results').innerHTML = `<pre>Error: ${error.message}</pre>`;
+            }
+        }
+
+        async function testFires() {
+            try {
+                const response = await fetch('/api/fires');
+                const data = await response.json();
+                document.getElementById('results').innerHTML = `<pre>Fires: ${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('results').innerHTML = `<pre>Error: ${error.message}</pre>`;
+            }
+        }
+    </script>
+</body>
+</html>
