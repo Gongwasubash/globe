@@ -17,16 +17,16 @@ export default defineConfig({
     CESIUM_BASE_URL: JSON.stringify('/cesium'),
     CESIUM_ION_TOKEN: JSON.stringify(process.env.VITE_CESIUM_ION_TOKEN || 'your-cesium-ion-token')
   },
+  optimizeDeps: {
+    exclude: ['@cesium/engine']
+  },
   build: {
-    commonjsOptions: {
-      transformMixedEsModules: true,
-      include: [/node_modules/, /@cesium/]
-    },
     rollupOptions: {
-      external: ['satellite.js'],
+      external: ['satellite.js', '@cesium/engine'],
       output: {
         globals: {
-          'satellite.js': 'satellite'
+          'satellite.js': 'satellite',
+          '@cesium/engine': 'Cesium'
         }
       }
     }
