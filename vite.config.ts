@@ -19,11 +19,8 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['satellite.js'],
       output: {
-        globals: {
-          'satellite.js': 'satellite'
-        }
+        globals: {}
       }
     }
   },
