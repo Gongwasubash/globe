@@ -17,13 +17,22 @@ export default defineConfig({
     CESIUM_BASE_URL: JSON.stringify('/cesium'),
     CESIUM_ION_TOKEN: JSON.stringify(process.env.VITE_CESIUM_ION_TOKEN || 'your-cesium-ion-token')
   },
+  build: {
+    rollupOptions: {
+      external: ['satellite.js'],
+      output: {
+        globals: {
+          'satellite.js': 'satellite'
+        }
+      }
+    }
+  },
   server: {
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
         changeOrigin: true,
         configure: (proxy, options) => {
-          // Fallback to direct API calls if Vercel dev server isn't running
           proxy.on('error', (err, req, res) => {
             console.log('Proxy error, falling back to direct API calls')
           })
