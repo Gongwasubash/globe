@@ -18,6 +18,10 @@ export default defineConfig({
     CESIUM_ION_TOKEN: JSON.stringify(process.env.VITE_CESIUM_ION_TOKEN || 'your-cesium-ion-token')
   },
   build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+      include: [/node_modules/, /@cesium/]
+    },
     rollupOptions: {
       external: ['satellite.js'],
       output: {
